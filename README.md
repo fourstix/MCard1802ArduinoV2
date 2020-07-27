@@ -12,11 +12,14 @@ However, instead of the orignal Elf front panel, I wanted to simulate the Netron
 I wrote Arduino based code to support communication to the 1802 Membership card and to use the Adafruit seven segment display and
 a hexadecimal keypad to simulate the Netronics Elf. I also created code to simulate the original Pixie video as well.
 
-This code is the second version using a 16 x 2 LCD character display and Teensy 3.2 for Pixie Video.  The hardware and
-code design is a bit cleaner.  A front panel card consists of an MCP23008 I2C 8 bit port expander to drive the 1802 Control lines,
+This code is the second version of the [MCard1802Arduino](https://github.com/fourstix/MCard1802Arduino) code using a 16 x 2 LCD 
+character display and Teensy 3.2 for Pixie Video.  In this version the hardware and code design is a bit cleaner.  The hardware
+is divided into two cards, a Front Panel Card and a Daughter Card.
+
+The front panel card consists of an MCP23008 I2C 8 bit port expander to drive the 1802 Control lines,
 a 7400 Quad Nand logic chip for Write Enable logic and inverting the Q line, and an MCP23017 I2C dual port IO expander to communicate
-with the 1802 Membership card's data in and data out lines.  A daughter card, provides the video and address line logic.
-A minimum implementation with could be done with the front panel logic alone.
+with the 1802 Membership card's data in and data out lines.  The Daughter Card provides the video and address line logic along with
+support for the MCSMP20J ROM. A minimum implementation with an Arduino can be done with the Front Panel card alone.
 
 Introduction
 -------------
@@ -44,13 +47,13 @@ it very easy to connect various hardware to the Arduiono.
 
 Information on the Sparkfun Qwiic interface is available [here.](https://www.sparkfun.com/qwiic)
 
-The daughter card simulates a Cdp1861 Pixie Video chip, using a [Teensy 3.2.](https://github.com/fourstix/MCard1802TeensyPixieVideo)
-The Teensy code uses a video ram buffer with a 128 x 64 graphics display supported by the
-[U8G2 graphics library](https://github.com/olikraus/u8g2) as a video display.  The Teensy will simulate
+The Daughter Card simulates a Cdp1861 Pixie Video chip, using a [Teensy 3.2.](https://github.com/fourstix/MCard1802TeensyPixieVideo)
+The [MCard1802TeensyPixieVideo](https://github.com/fourstix/MCard1802TeensyPixieVideo) code uses a video ram buffer with a 128 x 64
+graphics display supported by the[U8G2 graphics library](https://github.com/olikraus/u8g2) as a video display.  The Teensy will simulate
 the interrupts, external flag 1 signal, and DMA Output requests from the original pixie video.  This
 allows [programs](https://github.com/fourstix/MCard1802ArduinoV2/blob/master/docs/Cdp1802SampleProgramCode.txt)
-written for the original Cosmac Elf hardware to run directly on the simulator. The Teensy Pixie Video supports
-32 x 64 and 64 x 64 bit video resolutions.
+written for the original Cosmac Elf hardware to run directly on the simulator. The MCard1802 Teensy Pixie Video supports
+32 x 64 and 64 x 64 bit video resolutions at the same speed as the cdp1861 Pixie Video chip.
 
 U8G2 supports many kinds of 128 x 64 displays.  A list of supported displays is available 
 [here.](https://github.com/olikraus/u8g2/wiki/u8g2setupcpp)
@@ -59,15 +62,15 @@ U8G2 supports many kinds of 128 x 64 displays.  A list of supported displays is 
 For example, this [SSD1306 I2C 128 x64 OLED display](https://www.adafruit.com/product/938) available
 from Adadruit works fine with the Qwiic interface and is supported by Uthe 8G2 graphics library.
 
-This code uses the MCP23017 Arduino library by Bertrand Lemasle availble on
-[github.](https://github.com/blemasle/arduino-mcp23017)
-to communicate to the 1802 Membership card via I2C.
+This code uses the [MCP23017 Arduino library](https://github.com/blemasle/arduino-mcp23017)by Bertrand Lemasle
+and the [Adafruit MCP23008 Arduino library](https://github.com/adafruit/Adafruit-MCP23008-library) to
+communicate to the 1802 Membership card via I2C.
 
 Serial Communication
 --------------------
 This program can be used to communicate with the Super Monitor program running on the MCSMP20J ROM supplied with
 the Membership Card Starter Kit.  The serial communication uses inverse logic with the /EF3 line as RX and inverse Q as TX.
-The code is based on the [MCard1802Terminal project.](https://github.com/fourstix/MCard1802Terminal)
+The code is based on the [MCard1802Terminal](https://github.com/fourstix/MCard1802Terminal) project.
 
 
 This code uses the AltSoftSerial library by Paul Stoffregen for Serial communication to the 1802 Membership Card. 
@@ -98,11 +101,11 @@ Front Panel card with MCP23008 for control lines, a 7400 Quad Nand logic chip fo
 <table class="table table-hover table-striped table-bordered">
   <tr align="center">
    <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/FP1_Bare.jpg"></td>
-   <td><img src="https://github.com/fourstix/MCard1802Arduino/blob/master/pics/FP2_Populated.jpg"></td> 
-   <td><img src="https://github.com/fourstix/MCard1802Arduino/blob/master/pics/FP3_Completed.jpg"></td> 
+   <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/FP2_Populated.jpg"></td> 
+   <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/FP3_Completed.jpg"></td> 
   </tr>
   <tr align="center">
-    <td>Front panel card with sockets and connections for I2C, Vin, ground, and serial communication.</td>
+    <td>Front panel card with sockets and connections for I2C, Vin, Ground and serial communication.</td>
     <td>Front panel card populated with MCP23008, MCP23017 and 7400 with 30 pin socket for 1802 Membership Card.</td>
     <td>Fully populated Front Panel card with 1802 Membership Card connected.</td>
   </tr>
@@ -119,7 +122,6 @@ Daughter Card for Pixie Video, Address display and ROM.  The Daughter Card plugs
   </tr>
   <tr align="center">
     <td>Daughter card populated with Teensy 3.2, 374 Data Latch, MCP23017 IO Expander and MCSMP20J ROM.</td>
-    <td>Front panel card populated with MCP23008, MCP23017 and 7400 with 30 pin</td>
     <td>Fully populated Daughter Card installed in the U2 socket of the 1802 Membership Card.</td>
   </tr>
 </table>
@@ -131,24 +133,24 @@ Here are some examples running actual [CDP1802 programs.](https://github.com/fou
 
 <table class="table table-hover table-striped table-bordered">
   <tr align="center">
-   <td><img src="https://github.com/fourstix/MCard1802Arduino/blob/master/pics/Demo1_Q.jpg"></td>
-   <td><img src="https://github.com/fourstix/MCard1802Arduino/blob/master/pics/Demo2_Spaceship.jpg"></td> 
+   <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/Demo1_Q.jpg"></td>
+   <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/Demo2_Spaceship.jpg"></td> 
   </tr>
   <tr align="center">
     <td>1802 Membership card with a Hexadecimal Qwiic rx4 Keypad, generic 16x2 LCD display and an SH1106 128x64 OLED display</td>
     <td>SH1106 128x64 OLED display with 1802 Membership card running Cosmac Elf Spaceship program.</td>
   </tr>
   <tr align="center">
-   <td><img src="https://github.com/fourstix/MCard1802Arduino/blob/master/pics/Demo3_DMATest.jpg"></td>
-   <td><img src="https://github.com/fourstix/MCard1802Arduino/blob/master/pics/Demo4_SecondsClock.jpg"></td> 
+   <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/Demo3_DMATest.jpg"></td>
+   <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/Demo4_SecondsClock.jpg"></td> 
   </tr>
   <tr align="center">
     <td>1802 Membership card with SH1106 128x64 OLED display running the Video DMA Test program.</td>
     <td>1802 Membership card with SH1106 128x64 OLED display running the Digital Clock program..</td>
   </tr>
   <tr align="center">
-   <td><img src="https://github.com/fourstix/MCard1802Arduino/blob/master/pics/Adventure.jpg"></td>
-   <td><img src="https://github.com/fourstix/MCard1802Arduino/blob/master/pics/Adventure.jpg"></td> 
+   <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/Adventure.jpg"></td>
+   <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/Adventure.jpg"></td> 
   </tr>
   <tr align="center">
     <td>1802 Membership card with Hexadecimal Keypad, 16x2 LCD display and an SH1106 OLED display mounted in box.</td>
@@ -171,7 +173,7 @@ Repository Contents
   * MCard1802v2DaughterCard -- schematic for Daughter Card hardware with Pixie Video simulation logic using an Teensy 3.2 and a MCP23017 IO Expander for Address
   lines and the MCSMP20J ROM.
   * Cdp1802SampleProgramCode.txt -- Sample 1802 code listings for various programs.
-* **/pics** -- pictures of sample configurations
+* **/pics** -- pictures of sample configurations and examples
 
 
 License Information
