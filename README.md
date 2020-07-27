@@ -13,13 +13,13 @@ I wrote Arduino based code to support communication to the 1802 Membership card 
 a hexadecimal keypad to simulate the Netronics Elf. I also created code to simulate the original Pixie video as well.
 
 This code is the second version of the [MCard1802Arduino](https://github.com/fourstix/MCard1802Arduino) code using a 16 x 2 LCD 
-character display and Teensy 3.2 for Pixie Video.  In this version the hardware and code design is a bit cleaner.  The hardware
-is divided into two cards, a Front Panel Card and a Daughter Card.
+character display and Teensy 3.2 for Pixie Video.  In this version the hardware and code design is a bit cleaner with the hardware
+divided into two cards, a Front Panel Card and a Daughter Card.
 
-The front panel card consists of an MCP23008 I2C 8 bit port expander to drive the 1802 Control lines,
-a 7400 Quad Nand logic chip for Write Enable logic and inverting the Q line, and an MCP23017 I2C dual port IO expander to communicate
-with the 1802 Membership card's data in and data out lines.  The Daughter Card provides the video and address line logic along with
-support for the MCSMP20J ROM. A minimum implementation with an Arduino can be done with the Front Panel card alone.
+The Front Panel Card consists of an MCP23008 I2C 8 bit port expander to drive the 1802 Control lines,
+a 7400 Quad Nand logic chip for Write Enable and Serial Communication logic, and an MCP23017 I2C dual port IO expander to communicate
+with the 1802 Membership Card's data in and data out lines.  The Daughter Card provides the video and address line logic along with
+support for the MCSMP20J ROM. A minimum implementation with an Arduino can be done with the Front Panel Card alone.
 
 Introduction
 -------------
@@ -50,7 +50,7 @@ Information on the Sparkfun Qwiic interface is available [here.](https://www.spa
 The Daughter Card simulates a Cdp1861 Pixie Video chip, using a [Teensy 3.2.](https://github.com/fourstix/MCard1802TeensyPixieVideo)
 The [MCard1802TeensyPixieVideo](https://github.com/fourstix/MCard1802TeensyPixieVideo) code uses a video ram buffer with a 128 x 64
 graphics display supported by the[U8G2 graphics library](https://github.com/olikraus/u8g2) as a video display.  The Teensy will simulate
-the interrupts, external flag 1 signal, and DMA Output requests from the original pixie video.  This
+the Interrupt Request, External Flag 1 (/EF1) signal, and DMA Output requests from the original pixie video.  This
 allows [programs](https://github.com/fourstix/MCard1802ArduinoV2/blob/master/docs/Cdp1802SampleProgramCode.txt)
 written for the original Cosmac Elf hardware to run directly on the simulator. The MCard1802 Teensy Pixie Video supports
 32 x 64 and 64 x 64 bit video resolutions at the same speed as the cdp1861 Pixie Video chip.
@@ -121,7 +121,7 @@ Daughter Card for Pixie Video, Address display and ROM.  The Daughter Card plugs
    <td><img src="https://github.com/fourstix/MCard1802Arduino/blob/master/pics/DC_Installed.jpg"></td> 
   </tr>
   <tr align="center">
-    <td>Daughter card populated with Teensy 3.2, 374 Data Latch, MCP23017 IO Expander and MCSMP20J ROM.</td>
+    <td>Daughter card populated with Teensy 3.2, a 374 Data Latch, MCP23017 IO Expander and MCSMP20J ROM.</td>
     <td>Fully populated Daughter Card installed in the U2 socket of the 1802 Membership Card.</td>
   </tr>
 </table>
