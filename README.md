@@ -102,7 +102,7 @@ Front Panel card with MCP23008 for control lines, a 7400 Quad Nand logic chip fo
   <tr align="center">
    <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/FP1_Bare.jpg"></td>
    <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/FP2_Populated.jpg"></td> 
-   <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/FP3_Completed.jpg"></td> 
+   <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/FP3_Complete.jpg"></td> 
   </tr>
   <tr align="center">
     <td>Front panel card with sockets and connections for I2C, Vin, Ground and serial communication.</td>
@@ -118,7 +118,7 @@ Daughter Card for Pixie Video, Address display and ROM.  The Daughter Card plugs
 <table class="table table-hover table-striped table-bordered">
   <tr align="center">
    <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/DaughterCard.jpg"></td>
-   <td><img src="https://github.com/fourstix/MCard1802Arduino/blob/master/pics/DC_Installed.jpg"></td> 
+   <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/DC_Installed.jpg"></td> 
   </tr>
   <tr align="center">
     <td>Daughter card populated with Teensy 3.2, a 374 Data Latch, MCP23017 IO Expander and MCSMP20J ROM.</td>
@@ -149,7 +149,7 @@ Here are some examples running actual [CDP1802 programs.](https://github.com/fou
     <td>1802 Membership card with SH1106 128x64 OLED display running the Digital Clock program..</td>
   </tr>
   <tr align="center">
-   <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/Adventure.jpg"></td>
+   <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/TBD.jpg"></td>
    <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/Adventure.jpg"></td> 
   </tr>
   <tr align="center">
