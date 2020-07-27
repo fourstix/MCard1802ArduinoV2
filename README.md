@@ -32,7 +32,7 @@ The 1802 Membership card is available from Lee Hart on his [website.](http://www
 Additional documentation and other information are availble from Herb Johnson's 
 [1802 Membership Card wesite.](http://www.retrotechnology.com/memship/memship.html)
 
-This code supports a 16 x 2 LCD is used for the display.  This code has been tested with the 
+This code supports an I2C 16 x 2 LCD as the display.  This code has been tested with the 
 [Sparkfun SERLCD display](https://www.sparkfun.com/products/14073) and a generic I2C based 1602 LCD display.
 One could also use the [Adafruit LCD backpack](https://www.adafruit.com/product/292) for an I2C based
 16 x 2 LCD display.
