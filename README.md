@@ -47,10 +47,10 @@ it very easy to connect various hardware to the Arduiono.
 
 Information on the Sparkfun Qwiic interface is available [here.](https://www.sparkfun.com/qwiic)
 
-The Daughter Card simulates a Cdp1861 Pixie Video chip, using a [Teensy 3.2.](https://github.com/fourstix/MCard1802TeensyPixieVideo)
-The [MCard1802TeensyPixieVideo](https://github.com/fourstix/MCard1802TeensyPixieVideo) code uses a video ram buffer with a 128 x 64
-graphics display supported by the[U8G2 graphics library](https://github.com/olikraus/u8g2) as a video display.  The Teensy will simulate
-the Interrupt Request, External Flag 1 (/EF1) signal, and DMA Output requests from the original pixie video.  This
+The Daughter Card simulates a Cdp1861 Pixie Video chip, using a [Teensy 3.2.](https://www.pjrc.com/teensy/teensy31.html) The Teensy runs
+the [MCard1802TeensyPixieVideo](https://github.com/fourstix/MCard1802TeensyPixieVideo) code to support a video ram buffer displayed on a
+128 x 64 graphics display supported by the[U8G2 graphics library](https://github.com/olikraus/u8g2) as a video display.  The Teensy will
+simulate the Interrupt Request, External Flag 1 (/EF1) signal, and DMA Output requests from the original pixie video.  This
 allows [programs](https://github.com/fourstix/MCard1802ArduinoV2/blob/master/docs/Cdp1802SampleProgramCode.txt)
 written for the original Cosmac Elf hardware to run directly on the simulator. The MCard1802 Teensy Pixie Video supports
 32 x 64 and 64 x 64 bit video resolutions at the same speed as the cdp1861 Pixie Video chip.
@@ -190,7 +190,10 @@ trademarks of the Sparkfun Electronics Corporation, in the United States,
 other countries or both. 
 
 Adafruit, the Adafruit logo, and other Adafruit products and services are
-trademarks of the Adafruit Industries, in the United States,other countries or both. 
+trademarks of the Adafruit Industries, in the United States,other countries or both.
+
+PJRC, the PJRC logo, and other PJRC products and services are
+trademarks of the PJRC.com LLC, in the United States,other countries or both. 
 
 Other company, product, or services names may be trademarks or services marks of others.
 
@@ -204,6 +207,9 @@ Sparkfun Qwiic Keypad Arduino Library
 Copyright (c) 2016 SparkFun Electronics
 Written by Pete Lewis @ SparkFun Electronics, 3/12/2019
 
+Hex Keypad Arduino Library
+Copyright (c) 2020 by Gaston Williams
+
 Adafruit MCP23008 GPIO Expander Library
 Copyright (c) 2012-2019 Adadruit Industries
 Written by Limor Fried/Ladyada for Adafruit Industries.  
@@ -215,9 +221,16 @@ Sparkfun SerLCD Arduino Library
 Written by Gaston Williams and Nathan Seidle @ SparkFun
 Copyright (c) 2018-2020 Sparkfun Electronics
 
-LiquidCryistal_I2C Arduino Library
+LiquidCrystal_I2C Arduino Library
 Written by Frank de Brabander
 Copyright (c) 2011 DFRobot.com
+
+Alternative Software Serial Library
+Written by Paul Stoffregen
+Copyright (c) 2014 PJRC.COM, LLC, 
+
+The Teensy 3.2 hardware and software
+Copyright (c) 2016-2020 by Paul Stoffregen, PJRC.com LLC 
 
 The 1802 Membership Card Microcomputer 
 Copyright (c) 2006-2020  by Lee A. Hart.
