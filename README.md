@@ -48,8 +48,8 @@ it very easy to connect various hardware to the Arduiono.
 Information on the Sparkfun Qwiic interface is available [here.](https://www.sparkfun.com/qwiic)
 
 The Daughter Card simulates a Cdp1861 Pixie Video chip, using a [Teensy 3.2.](https://www.pjrc.com/teensy/teensy31.html) The Teensy runs
-the [MCard1802TeensyPixieVideo](https://github.com/fourstix/MCard1802TeensyPixieVideo) code to support a video ram buffer displayed on a
-128 x 64 graphics display supported by the[U8G2 graphics library](https://github.com/olikraus/u8g2) as a video display.  The Teensy will
+the [MCard1802TeensyPixieVideo](https://github.com/fourstix/MCard1802TeensyPixieVideo) code to support a video ram buffer displayed on 
+any 128 x 64 graphics display supported by the [U8G2 graphics library](https://github.com/olikraus/u8g2).  The Teensy 3.2 will
 simulate the Interrupt Request, External Flag 1 (/EF1) signal, and DMA Output requests from the original pixie video.  This
 allows [programs](https://github.com/fourstix/MCard1802ArduinoV2/blob/master/docs/Cdp1802SampleProgramCode.txt)
 written for the original Cosmac Elf hardware to run directly on the simulator. The MCard1802 Teensy Pixie Video supports
@@ -62,7 +62,7 @@ U8G2 supports many kinds of 128 x 64 displays.  A list of supported displays is 
 For example, this [SSD1306 I2C 128 x64 OLED display](https://www.adafruit.com/product/938) available
 from Adadruit works fine with the Qwiic interface and is supported by Uthe 8G2 graphics library.
 
-This code uses the [MCP23017 Arduino library](https://github.com/blemasle/arduino-mcp23017)by Bertrand Lemasle
+This code uses the [MCP23017 Arduino library](https://github.com/blemasle/arduino-mcp23017) by Bertrand Lemasle
 and the [Adafruit MCP23008 Arduino library](https://github.com/adafruit/Adafruit-MCP23008-library) to
 communicate to the 1802 Membership card via I2C.
 
@@ -78,6 +78,18 @@ This library is available through the Arduino Library Manager or in the [PaulSto
 on GitHub. For Inverse Logic an updated version of the AltSoftSerial library is available in the [fourstix/AltSoftSerial repository](https://github.com/fourstix/AltSoftSerial)
 forked from the master repository on GitHub.  [Pull Request #59](https://github.com/PaulStoffregen/AltSoftSerial/pull/59) will merge this code update into the master.
 
+Advantages
+----------
+* The second design decouples the Arduino from the 1802 Memory Card making it easier to replace the Arduino with
+another processor.  Communication to the 1802 Membership card is soley through I2C and serial TX, RX lines.
+* Serial communication supported is compatible with programs supplied in the MCSMP20J ROM.  It also supports other
+serial terminal programs such as RealTerm and Putty.
+* The LCD display provides more information than the Seven Segment display in the first design.
+* The Front Panel Card provides a minimal support for the 1802 Membership Card using only 3 logic chips for Data I/O
+and serial communication.
+* The Daughter Card provides video and address support.
+* The Teensy 3.2 Pixie video is real-time compatible with code written for the CDP1861 chip and supports both 64x64
+and 32x64 video resolution modes.
 
 Teardown
 --------
@@ -109,6 +121,12 @@ Front Panel card with MCP23008 for control lines, a 7400 Quad Nand logic chip fo
     <td>Front panel card populated with MCP23008, MCP23017 and 7400 with 30 pin socket for 1802 Membership Card.</td>
     <td>Fully populated Front Panel card with 1802 Membership Card connected.</td>
   </tr>
+  <tr align="center">
+    <td colspan="2"><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/FrontPanelSchematic.jpg"></td>
+  </tr>
+  <tr align="center">
+      <td colspan="2">Front Panel Card Schematic</td>
+  </tr>
 </table>
 
 Daughter Card
@@ -124,6 +142,29 @@ Daughter Card for Pixie Video, Address display and ROM.  The Daughter Card plugs
     <td>Daughter card populated with Teensy 3.2, a 374 Data Latch, MCP23017 IO Expander and MCSMP20J ROM.</td>
     <td>Fully populated Daughter Card installed in the U2 socket of the 1802 Membership Card.</td>
   </tr>
+  <tr align="center">
+    <td colspan="2"><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/DaughterCardSchematic.jpg"></td>
+  </tr>
+  <tr align="center">
+      <td colspan="2">Daughter Card Schematic</td>
+  </tr>  
+</table>
+
+Assembly
+--------
+The Front Panel Card, Daughter Card and 1802 Membership Card were assembled in a painted cardboard box with switches
+and displays.  The Serial Communication with MCSMP20J ROM programs were validated with the Arduino IDE and the ANSI
+graphics with Adventureland program were verified with the RealTerm terminal program.
+
+<table class="table table-hover table-striped table-bordered">
+  <tr align="center">
+   <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/Assenmbled_1.jpg"></td>
+   <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/Adventure.jpg"></td> 
+  </tr>
+  <tr align="center">
+    <td>1802 Membership card with Hexadecimal Keypad, 16x2 LCD display and an SH1106 OLED display mounted in box.</td>
+    <td>RealTerm Window with the 1802 Membership Card running MCSMP20J ROM with Adventureland ANSI graphics.</td>
+  </tr>   
 </table>
 
 Example Demos
@@ -147,15 +188,7 @@ Here are some examples running actual [CDP1802 programs.](https://github.com/fou
   <tr align="center">
     <td>1802 Membership card with SH1106 128x64 OLED display running the Video DMA Test program.</td>
     <td>1802 Membership card with SH1106 128x64 OLED display running the Digital Clock program..</td>
-  </tr>
-  <tr align="center">
-   <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/TBD.jpg"></td>
-   <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/Adventure.jpg"></td> 
-  </tr>
-  <tr align="center">
-    <td>1802 Membership card with Hexadecimal Keypad, 16x2 LCD display and an SH1106 OLED display mounted in box.</td>
-    <td>RealTerm Window with the 1802 Membership Card running MCSMP20J ROM with Adventureland ANSI graphics.</td>
-  </tr>   
+  </tr>  
 </table>
 
 Repository Contents
