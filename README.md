@@ -164,7 +164,7 @@ graphics with Adventureland program were verified with the RealTerm terminal pro
    <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/Adventure.jpg"></td> 
   </tr>
   <tr align="center">
-    <td>1802 Membership card with Hexadecimal Keypad, 16x2 LCD display and an SH1106 OLED display mounted in box.</td>
+    <td>1802 Membership card with Hexadecimal Keypad, 16x2 LCD display and an SH1106 OLED display mounted in a cardboard box.</td>
     <td>RealTerm Window with the 1802 Membership Card running MCSMP20J ROM with Adventureland ANSI graphics.</td>
   </tr>   
 </table>
