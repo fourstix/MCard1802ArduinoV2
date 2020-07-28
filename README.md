@@ -84,7 +84,8 @@ Advantages
 ----------
 * The second design decouples the Arduino from the 1802 Memory Card making it easier to replace the Arduino with
 another processor.  Communication to the 1802 Membership card is soley through I2C and serial TX, RX lines.
-* The LCD display provides more information than the Seven Segment display in the first design.
+* The LCD display provides more information than the Seven Segment display in the first design. An LED shows the 
+status of the Q bit.
 * The Front Panel Card provides a minimal support for the 1802 Membership Card using only 3 logic chips for Data I/O
 and serial communication.
 * The Daughter Card provides video, ROM and address display support.
@@ -103,8 +104,8 @@ Teardown from the first version.
    <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/Teardown2.jpg"></td> 
   </tr>
   <tr align="center">
-    <td>Removed all inside protoboards and logic, leaving only the Arduino.</td>
-    <td>Replaced Seven Segment display with a generic 16x2 I2C LCD display and kept SH1106 128x64 OLED display.</td>
+    <td>Removed protoboards, wires and logic from inside the box, leaving only the Arduino.</td>
+    <td>Replaced Seven Segment display with a generic 16x2 I2C LCD display, added LED for Q bit status and kept SH1106 128x64 OLED display.</td>
   </tr>
 </table>
 
@@ -180,8 +181,8 @@ Here are some examples running actual [CDP1802 programs.](https://github.com/fou
    <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/Demo2_Spaceship.jpg"></td> 
   </tr>
   <tr align="center">
-    <td>1802 Membership card with a Hexadecimal Qwiic rx4 Keypad, generic 16x2 LCD display and an SH1106 128x64 OLED display</td>
-    <td>SH1106 128x64 OLED display with 1802 Membership card running Cosmac Elf Spaceship program.</td>
+    <td>1802 Membership card with a Hexadecimal Qwiic 4x4 Keypad, generic 16x2 LCD display, SH1106 128x64 OLED display and LED showing Q bit on.</td>
+    <td>1802 Membership card with SH1106 128x64 OLED display running Cosmac Elf Spaceship program.</td>
   </tr>
   <tr align="center">
    <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/Demo3_DMATest.jpg"></td>
@@ -189,7 +190,7 @@ Here are some examples running actual [CDP1802 programs.](https://github.com/fou
   </tr>
   <tr align="center">
     <td>1802 Membership card with SH1106 128x64 OLED display running the Video DMA Test program.</td>
-    <td>1802 Membership card with SH1106 128x64 OLED display running the Digital Clock program..</td>
+    <td>1802 Membership card with SH1106 128x64 OLED display running the Digital Clock program.</td>
   </tr>  
 </table>
 
