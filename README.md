@@ -9,8 +9,11 @@ and spent my hard-earned dollars to buy a kit from Netronics [based on their ads
 
 My orignal Elf II was lost in a move long ago, but today Lee Hart's 1802 Membership card duplicates the orignal elf hardware.
 However, instead of the orignal Elf front panel, I wanted to simulate the Netronics Elf II interface using hardware I had at hand. 
-I wrote Arduino based code to support communication to the 1802 Membership card and to use the Adafruit seven segment display and
-a hexadecimal keypad to simulate the Netronics Elf. I also created code to simulate the original Pixie video as well.
+I wrote Arduino based code to support communication to the 1802 Membership card and to simulate the Netronics Elf. I also created
+code to simulate the original Pixie video as well.
+
+Description
+------------
 
 This code is the second version of the [MCard1802Arduino](https://github.com/fourstix/MCard1802Arduino) code using a 16 x 2 LCD 
 character display and Teensy 3.2 for Pixie Video.  In this version the hardware and code design is a bit cleaner with the hardware
@@ -58,7 +61,6 @@ written for the original Cosmac Elf hardware to run directly on the simulator. T
 U8G2 supports many kinds of 128 x 64 displays.  A list of supported displays is available 
 [here.](https://github.com/olikraus/u8g2/wiki/u8g2setupcpp)
 
-
 For example, this [SSD1306 I2C 128 x64 OLED display](https://www.adafruit.com/product/938) available
 from Adadruit works fine with the Qwiic interface and is supported by Uthe 8G2 graphics library.
 
@@ -82,12 +84,12 @@ Advantages
 ----------
 * The second design decouples the Arduino from the 1802 Memory Card making it easier to replace the Arduino with
 another processor.  Communication to the 1802 Membership card is soley through I2C and serial TX, RX lines.
-* Serial communication supported is compatible with programs supplied in the MCSMP20J ROM.  It also supports other
-serial terminal programs such as RealTerm and Putty.
 * The LCD display provides more information than the Seven Segment display in the first design.
 * The Front Panel Card provides a minimal support for the 1802 Membership Card using only 3 logic chips for Data I/O
 and serial communication.
-* The Daughter Card provides video and address support.
+* The Daughter Card provides video, ROM and address display support.
+* Serial communication is compatible with programs supplied in the MCSMP20J ROM.  It also supports other
+serial terminal programs such as RealTerm and Putty.
 * The Teensy 3.2 Pixie video is real-time compatible with code written for the CDP1861 chip and supports both 64x64
 and 32x64 video resolution modes.
 
@@ -122,10 +124,10 @@ Front Panel card with MCP23008 for control lines, a 7400 Quad Nand logic chip fo
     <td>Fully populated Front Panel card with 1802 Membership Card connected.</td>
   </tr>
   <tr align="center">
-    <td colspan="2"><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/FrontPanelSchematic.jpg"></td>
+    <td colspan="3"><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/FrontPanelSchematic.jpg"></td>
   </tr>
   <tr align="center">
-      <td colspan="2">Front Panel Card Schematic</td>
+      <td colspan="3">Front Panel Card Schematic</td>
   </tr>
 </table>
 
@@ -158,7 +160,7 @@ graphics with Adventureland program were verified with the RealTerm terminal pro
 
 <table class="table table-hover table-striped table-bordered">
   <tr align="center">
-   <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/Assenmbled_1.jpg"></td>
+   <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/Assembled_1.jpg"></td>
    <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/Adventure.jpg"></td> 
   </tr>
   <tr align="center">
