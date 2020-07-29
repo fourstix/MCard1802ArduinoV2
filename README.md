@@ -184,6 +184,21 @@ graphics with Adventureland program were verified with the RealTerm terminal pro
   </tr>   
 </table>
 
+Displays
+--------
+Close up pictures of an LCD display showing the status of the 1802 Membership Card and an OLED display with the Pixie Video output.
+
+<table class="table table-hover table-striped table-bordered">
+  <tr align="center">
+   <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/LED_Display.jpg"></td>
+   <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/OLED_Display.jpg"></td> 
+  </tr>
+  <tr align="center">
+    <td>16x2 LCD display showing an 1802 Membership Card status running a program to set Q.</td>
+    <td>SH1106 128x64 OLED display showing an 1802 Membership Card running a 64x64 resolution Pixie Video program.</td>
+  </tr>   
+</table>
+
 Example Demos
 -------------
 Here are some examples running actual [CDP1802 programs.](https://github.com/fourstix/QwiicCosmacElfSim/blob/master/docs/Cdp1802SampleProgramCode.txt)
