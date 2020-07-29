@@ -98,12 +98,14 @@ Power
 -----
 All Grounds are common. Vin (+9V) from a power source powers the Arduino and Vin is also fed to a 7805 voltage regulator
 on the Front Panel Card.  The 7805 produces the 5V VDD that powers the 1802 Membership Card.  The ROM and Digital Latch 
-on the Daughter Card are also powered by VDD, as well.  The 1802 Membership card has a super-capacitor, that will hold VDD high
-for awhile after Vin is gone.  This can maintain a program in RAM for about 10 or 15 minutes after power is switched off. The 
-Arduino powers the hex keypad through the Qwiic interface and the LCD display is powered through the Arduino 5v pin to avoid 
-draining the super-capacitor.  The 5V output pin from the Arudino also goes to the Daughter Card to power the Teensy 3.2 through
-its Vin pin.  The 3.3V output pin of the Teensy powers the OLED display.  This way the Teensy 3.2 and Arduino are both powered up
-and powered down at the same time.
+on the Daughter Card are also powered by VDD, as well. 
+
+The 1802 Membership card has a super-capacitor, that will hold VDD highfor awhile after Vin is gone.  This can maintain a program
+in RAM for about 10 or 15 minutes after power is switched off. The Arduino powers the hex keypad through the Qwiic interface and
+the LCD display is powered through the Arduino 5v pin to avoid draining the super-capacitor.  
+
+The 5V output pin from the Arudino also goes to the Daughter Card to power the Teensy 3.2 through its Vin pin.  The 3.3V output
+pin of the Teensy powers the OLED display.  This way the Teensy 3.2 and Arduino are both powered up and powered down at the same time. 
 
 
 Teardown
