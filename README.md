@@ -96,11 +96,11 @@ and 32x64 video resolution modes.
 
 Power
 -----
-All Grounds are common. Vin (+9V) from a power source powers the Arduino and Vin is also fed to a 7805 voltage regulator
-on the Front Panel Card.  The 7805 produces the 5V VDD that powers the 1802 Membership Card and the chips on the Front Panel
-Card.  The ROM and Octal Latch on the Daughter Card are also powered by VDD, as well. 
+All Grounds are common. Vin (+9V) from a power source powers the Arduino and Vin (+9V) is also fed to the input of a 7805 
+voltage regulator on the Front Panel Card.  The 7805 output produces the 5V VDD that powers the 1802 Membership Card and
+the chips on the Front Panel Card.  The ROM and Octal Latch on the Daughter Card are also powered by VDD, as well. 
 
-The 1802 Membership card has a super-capacitor, that will hold VDD highfor awhile after Vin is gone.  This can maintain a program
+The 1802 Membership card has a super-capacitor that will hold VDD high for awhile after Vin is gone.  This can maintain a program
 in RAM for about 10 or 15 minutes after power is switched off. The Arduino powers the hex keypad through the Qwiic interface,
 and the LCD display is powered through the Arduino 5v pin to avoid draining the super-capacitor.  
 
