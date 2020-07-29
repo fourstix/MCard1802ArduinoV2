@@ -190,7 +190,7 @@ Close up pictures of an LCD display showing the status of the 1802 Membership Ca
 
 <table class="table table-hover table-striped table-bordered">
   <tr align="center">
-   <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/LED_Display.jpg"></td>
+   <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/LCD_Display.jpg"></td>
    <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/OLED_Display.jpg"></td> 
   </tr>
   <tr align="center">
