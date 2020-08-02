@@ -37,11 +37,12 @@ boolean escape        = false;
 boolean hex_escape    = false;
 char    hex_char      = 0x00;
 int     baud          = 1200;
-
+boolean remove_cr     = false;
 void setupTerminal() {
   //1200 baud seems to work best
   altSerial.begin(baud);
   showTerminalMenu();
+  showBaudRate();
   Serial.println("Ready!");
   //Turn data display off
   show_data = false;
@@ -96,6 +97,12 @@ void processTerminalChar(char inChar) {
   } else if (inChar == '\\') { //Check for start of a new escape squence
     //Next character determines what kind of escape sequence
     escape = true;
+  } else if (remove_cr) { //Remove trailing carriage return after non-character escape
+    remove_cr = false;
+    //If next character is something else, go ahead and send it
+    if (inChar != '\r') {    
+      sendChar(inChar);
+    } //if    
   } else { //Regular character
     // Send it out to the 1802 on pins 8 & 9
     sendChar(inChar);   
@@ -113,14 +120,22 @@ void processEscape(char e_char) {
     //Show menu
     case '?':      
       showTerminalMenu();
+      showBaudRate();
+      //Remove next carriage return after non-character escape sequence
+      remove_cr = true;
     break;
     
     //Quit
     case 'q':      
     case 'Q':      
-      if (confirmQuit()) {
+      Serial.println();
+      Serial.println(F("Quit ASCII Terminal."));
+      if (confirmChoice()) {
         endTerminal();
-      } // if confirmQuit
+      } else {
+        //Remove next carriage return after non-character escape sequence
+        remove_cr = true;
+      } // if confirmChoice
     break;
 
     //New Line
@@ -153,18 +168,22 @@ void processEscape(char e_char) {
       show_data = !show_data;
       //Force update to the display
       printStatus(true);
+      Serial.print(F("Data display is "));
+      printOnOff(show_data);
+      Serial.println();
+      //Remove next carriage return after non-character escape sequence
+      remove_cr = true;
     break;
     
     //Toggle the /EF2 flag
     case 'o':
     case 'O':
       assert_ef2 = !assert_ef2;
-      Serial.print("\EF2 flag is ");
-      if(assert_ef2) {
-        Serial.println("on.");
-      } else {
-        Serial.println("off.");
-      } //if-elase assert_ef2
+      Serial.print(F("\\EF2 flag is "));
+      printOnOff(assert_ef2);
+      Serial.println();
+      //Remove next carriage return after non-character escape sequence
+      remove_cr = true;
     break;    
     
     default: 
@@ -183,6 +202,7 @@ void processEscape(char e_char) {
   } // switch
 } //processEscape
 
+//Process characters in a hexadecimal escape sequence
 void processHexEscape(char h_char) {
   if (isHexadecimalDigit(h_char)) {
     //Shift first hex digit into high nibble
@@ -213,6 +233,36 @@ void sendChar(char c_send) {
   delay(20);  
 }
 
+//Change the Baud rate
+void changeBaud() {
+  if (baud == 1200) {
+    //fast
+    baud = 2400;
+  } else if (baud == 2400) {
+    //slow
+    baud = 300;
+  } else {
+    //default value
+    baud = 1200;
+  }
+} //changeBaud
+
+//Show a message with the baud rate
+void showBaudRate() {
+  Serial.print(F("Serial terminal speed is "));
+  Serial.print(baud);
+  Serial.println(" baud.");
+}
+
+//Print "on" or "off" based on a value
+void printOnOff(boolean flag) {
+   if (flag) {
+    Serial.print(F("on"));
+   } else {
+    Serial.print(F("off"));
+   } //if-else flag
+} //printOnOff
+
 //Show the ASCII Terminal menu
 void showTerminalMenu() {
   Serial.println();
@@ -236,10 +286,8 @@ void showTerminalMenu() {
 /*
   Confirm the chosen action by asking for a yes / no
 */
-boolean confirmQuit() {
+boolean confirmChoice() {
     bool result = false;
-    Serial.println();
-    Serial.print(F("Quit ASCII Terminal. "));
     Serial.println(F("Are you sure (y/n)?"));
     while (true) {
       while (! Serial.available());  // wait for characters

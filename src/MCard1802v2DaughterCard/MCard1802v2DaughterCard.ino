@@ -14,9 +14,8 @@
  * The 1802 Membership Card Microcomputer 
  * Copyright (c) 2006-2020  by Lee A. Hart.
  * 
- * A Sparkfun 4x4 Keypad was used for key input.  The star
- * key * is mapped to E and the hash key # is F.
- * 
+ * A Sparkfun 4x4 Keypad was used for key input.   
+ *  
  * The Hex Keypad Arduino Library is based upon the 
  * Sparkfun Qwiic Keypad Arduino Library modified for
  * hexadecimal input from a 4x4 Keypad.
@@ -180,9 +179,10 @@
 #define PGM_LIFE       6
 #define PGM_ECHO       7
 #define PGM_IDIOT      8
+#define PGM_GRAPHICS   9
 
 //Program Count for input 
-#define PGM_COUNT      9
+#define PGM_COUNT      10
 
 //Page size for loading programs
 #define PAGE_SIZE 256
@@ -413,6 +413,8 @@ void beginLoading(int type) {
     pgm_page_size = 3 * PAGE_SIZE;
   } else if (type == PGM_IDIOT) {
     pgm_page_size = 4 * PAGE_SIZE;
+  } else if (type == PGM_GRAPHICS) {
+    pgm_page_size = 5 * PAGE_SIZE;
   } else {
     pgm_page_size = PAGE_SIZE;
   }
@@ -713,6 +715,13 @@ void processChar(char c) {
       } //if-elase assert_ef2
     break;
 
+    //Change the Serial baud rate
+    case 'S':
+    case 's':
+      changeBaud();
+      showBaudRate();
+    break;
+
     //Start the serial terminal mode
     case 'T':
     case 't':
@@ -888,8 +897,10 @@ void showMenu() {
   Serial.println(F("     - Simulate an Input button press in run mode")); 
   Serial.println(F(" J - Jump to end of a page in examine mode."));
   Serial.println(F(" O - toggle state of Output control line /EF2"));
-  Serial.println(F(" P - autoload a Program in load mode."));    
-  Serial.println(F(" T - enable serial Terminal."));  
+  Serial.println(F(" P - autoload a Program in load mode."));
+  Serial.println(F(" S - change terminal Serial baud rate from 1200 baud"));  
+  Serial.println(F("   - to 2400 baud, then to 300 baud and then back to 1200."));
+  Serial.println(F(" T - start the serial Terminal."));  
   Serial.println(F(" ? = show this menu")); 
 }
 
@@ -898,15 +909,16 @@ void showMenu() {
 void showProgramMenu() {
   Serial.println();
   Serial.println(F(" Enter program number below to select the program to load:"));
-  Serial.println(F(" 0 - load a page with all Zeros"));
-  Serial.println(F(" 1 - load a page with Sequential Numbers"));  
+  Serial.println(F(" 0 - load a page with a Memory Clear program"));
+  Serial.println(F(" 1 - load a page with a Memory Sequncer program"));  
   Serial.println(F(" 2 - load a page with the Spacehip program"));
   Serial.println(F(" 3 - load a page with a Digital Clock program"));
   Serial.println(F(" 4 - load a page with the Video DMA Test program"));
   Serial.println(F(" 5 - load a page with the EETOPS Monitor program"));
   Serial.println(F(" 6 - load 3 pages with a Game of Life program"));
   Serial.println(F(" 7 - load a page with a Serial Echo Test program"));
-  Serial.println(F(" 8 - load 4 pages with the IDIOT Monitor program."));  
+  Serial.println(F(" 8 - load 4 pages with the IDIOT Monitor program"));  
+  Serial.println(F(" 9 - load 5 pages with a Graphics Demo program"));  
 }
 
 //Read program number from serial input until a newline or other character is found
