@@ -220,7 +220,14 @@ Here are some examples running actual [CDP1802 programs.](https://github.com/fou
   <tr align="center">
     <td>1802 Membership card with SH1106 128x64 OLED display running the Video DMA Test program.</td>
     <td>1802 Membership card with SH1106 128x64 OLED display running the Digital Clock program.</td>
-  </tr>  
+  </tr>
+  <tr align="center">
+    <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/Demo5_Text.jpg"></td>
+    <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/Demo5_Sprites.jpg"></td> 
+  </tr>
+    <tr align="center">
+      <td colspan="2">1802 Membership card with SH1106 128x64 OLED display running the 64x64 Video Graphics Demo program.</td>      
+  </tr> 
 </table>
 
 Repository Contents
