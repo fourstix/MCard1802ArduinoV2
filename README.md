@@ -210,8 +210,8 @@ Here are some examples running actual [CDP1802 programs.](https://github.com/fou
    <td style="width:50%;"><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/Demo2_Spaceship.jpg"></td> 
   </tr>
   <tr align="center">
-    <td>1802 Membership card with a Hexadecimal Qwiic 4x4 Keypad, generic 16x2 LCD display, SH1106 128x64 OLED display and LED showing Q bit on.</td>
-    <td>1802 Membership card with SH1106 128x64 OLED display running Cosmac Elf Spaceship program.</td>
+    <td style="width:50%;">1802 Membership card with a Hexadecimal Qwiic 4x4 Keypad, generic 16x2 LCD display, SH1106 128x64 OLED display and LED showing Q bit on.</td>
+    <td style="width:50%;">1802 Membership card with SH1106 128x64 OLED display running Cosmac Elf Spaceship program.</td>
   </tr>
   <tr align="center">
    <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/Demo3_DMATest.jpg"></td>
