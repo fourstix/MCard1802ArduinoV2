@@ -152,8 +152,8 @@ Daughter Card for Pixie Video, Address display and ROM.  The Daughter Card plugs
 
 <table class="table table-hover table-striped table-bordered">
   <tr align="center">
-   <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/DaughterCard.jpg"></td>
-   <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/DC_Installed.jpg"></td> 
+   <td style="width:50%;"><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/DaughterCard.jpg"></td>
+   <td style="width:50%;"><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/DC_Installed.jpg"></td> 
   </tr>
   <tr align="center">
     <td>Daughter card populated with Teensy 3.2, a 374 Data Latch, MCP23017 IO Expander and MCSMP20J ROM.</td>
@@ -175,8 +175,8 @@ graphics with Adventureland program were verified with the RealTerm terminal pro
 
 <table class="table table-hover table-striped table-bordered">
   <tr align="center">
-   <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/Assembled_1.jpg"></td>
-   <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/Adventure.jpg"></td> 
+   <td style="width:50%;"><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/Assembled_1.jpg"></td>
+   <td style="width:50%;"><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/Adventure.jpg"></td> 
   </tr>
   <tr align="center">
     <td>1802 Membership card with Hexadecimal Keypad, 16x2 LCD display and an SH1106 OLED display mounted in a cardboard box.</td>
@@ -206,8 +206,8 @@ Here are some examples running actual [CDP1802 programs.](https://github.com/fou
 
 <table class="table table-hover table-striped table-bordered">
   <tr align="center">
-   <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/Demo1_Q.jpg"></td>
-   <td><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/Demo2_Spaceship.jpg"></td> 
+   <td style="width:50%;"><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/Demo1_Q.jpg"></td>
+   <td style="width:50%;"><img src="https://github.com/fourstix/MCard1802ArduinoV2/blob/master/pics/Demo2_Spaceship.jpg"></td> 
   </tr>
   <tr align="center">
     <td>1802 Membership card with a Hexadecimal Qwiic 4x4 Keypad, generic 16x2 LCD display, SH1106 128x64 OLED display and LED showing Q bit on.</td>
