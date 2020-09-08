@@ -235,11 +235,15 @@ Repository Contents
 * **/src/MCard1802v2FrontPanel/**
   * MCard1802v2FrontPanel.ino -- Arduino based Hex Keypad digital input with an LCD display used to show the data IO lines and status for the 1802 Membership card.
   * MCard1802Terminal.ino -- Serial terminal for communicating with 1802 Membership Card.
-* **/src/MCard1802DaughterCard/** 
-  * MCard1802DaughterCard.ino -- Arduino based LCD display used to show the address, data IO lines and status for the 1802 Membership card with
+* **/src/MCard1802v2DaughterCard/** 
+  * MCard1802v2DaughterCard.ino -- Arduino based LCD display used to show the address, data IO lines and status for the 1802 Membership card with
   Pixie Video on an 128 x 64 graphic OLED display. 
   * MCard1802Terminal.ino -- Serial terminal for communicating with 1802 Membership Card.
   * MCard1802v2Programs.ino -- Serveral classic 1802 programs with a program loader to load them into the 1802 RAM memory.  
+* **/src/MCard1802v2DaughterCardTTY/** 
+  * MCard1802v2DaughterCardTTY.ino -- Arduino MCard1802DaughterCard code plus additonal functions for entering ASCII character literals and ASCII strings. 
+  * MCard1802Terminal.ino -- Serial terminal for communicating with 1802 Membership Card.
+  * MCard1802v2Programs.ino -- Serveral 1802 programs with a program loader to load them into the 1802 RAM memory, including a basic ASCII TTY console program.    
 * **/docs** -- documentation files
   * MCard1802v2FrontPanel.pdf -- schematic for Front Panel hardware with MCP23008 and MCP23017 circuit logic.
   * MCard1802v2DaughterCard -- schematic for Daughter Card hardware with Pixie Video simulation logic using an Teensy 3.2 and a MCP23017 IO Expander for Address
