@@ -13,7 +13,7 @@
  * 
  * The 1802 Membership Card Microcomputer 
  * Copyright (c) 2006-2020  by Lee A. Hart.
- * 
+ *   
  * A Sparkfun 4x4 Keypad was used for key input.   
  *  
  * The Hex Keypad Arduino Library is based upon the 
