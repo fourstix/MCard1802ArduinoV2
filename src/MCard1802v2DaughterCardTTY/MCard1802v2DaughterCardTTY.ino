@@ -1039,8 +1039,8 @@ boolean showAddress() {
 //Read the address from the MCP23017
 uint16_t readAddress() {
   uint16_t result = 0x0000;   
-  byte lo_address = mcpAddr.readPort(MCP23017_PORT::A);
-  byte hi_address = mcpAddr.readPort(MCP23017_PORT::B);
+  byte lo_address = mcpAddr.readPort(MCP23017Port::A);
+  byte hi_address = mcpAddr.readPort(MCP23017Port::B);
 
   //put byte into result
   result |= hi_address;
@@ -1145,18 +1145,18 @@ void setupPorts() {
   //Set up MCP23017's
   Wire.begin(); 
   mcpData.init();
-  mcpData.portMode(MCP23017_PORT::A, 0);         //Port A as ouput
-  mcpData.portMode(MCP23017_PORT::B, 0b11111111);//Port B as input
+  mcpData.portMode(MCP23017Port::A, 0);         //Port A as ouput
+  mcpData.portMode(MCP23017Port::B, 0b11111111);//Port B as input
 
   mcpAddr.init();
-  mcpAddr.portMode(MCP23017_PORT::A, 0b11111111);//Port A as input
-  mcpAddr.portMode(MCP23017_PORT::B, 0b11111111);//Port B as input
+  mcpAddr.portMode(MCP23017Port::A, 0b11111111);//Port A as input
+  mcpAddr.portMode(MCP23017Port::B, 0b11111111);//Port B as input
 
   //Initialize GPIO ports
-  mcpData.writeRegister(MCP23017_REGISTER::GPIOA, 0x00);
-  mcpData.writeRegister(MCP23017_REGISTER::GPIOB, 0x00);
-  mcpAddr.writeRegister(MCP23017_REGISTER::GPIOA, 0x00);
-  mcpAddr.writeRegister(MCP23017_REGISTER::GPIOB, 0x00);
+  mcpData.writeRegister(MCP23017Register::GPIO_A, 0x00);
+  mcpData.writeRegister(MCP23017Register::GPIO_B, 0x00);
+  mcpAddr.writeRegister(MCP23017Register::GPIO_A, 0x00);
+  mcpAddr.writeRegister(MCP23017Register::GPIO_B, 0x00);
   
   //Set up MCP23008 for control lines
   mcpCtrl.begin(MCP_CTRL);
@@ -1298,7 +1298,7 @@ void loop() {
       print2Hex(&Serial, data_in);
       Serial.println(" to data bus.");
     #endif
-    mcpData.writeRegister(MCP23017_REGISTER::GPIOA, data_in);
+    mcpData.writeRegister(MCP23017Register::GPIO_A, data_in);
     //Save key data after sending out
     old_data_in = data_in;
     //wait a bit after sending
@@ -1390,7 +1390,7 @@ void loop() {
   old_data_out = data_out;
   
   //Read the input data
-  data_out = mcpData.readPort(MCP23017_PORT::B);
+  data_out = mcpData.readPort(MCP23017Port::B);
 
   //Save previous q value before reading
   old_q_bit = q_bit;
